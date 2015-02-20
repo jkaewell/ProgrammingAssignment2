@@ -1,14 +1,13 @@
-##  R scripts which caches a matrix inverse
+##  This file contains R scripts which caches a matrix inverse
 ##  The first call to the cacheSolve function 
-##  uses the intrinsic solve() function to initialize the cache.
+##  uses the solve() function to initialize the cache with the inverted matrix.
 ##  Subsequent calls to cacheSolve() returns the cached inverted matrix
 ##  
 ## 
 ##  makeCacheMatrix() returns a list of functions which
 ##  are used to initialize state and return state stored
 ##  in the function's environment to enable the caching 
-##  of a matrix's inverse to save processing time when
-##  the inverse of a matrix is needed more than once.
+##  of a matrix's inverse.
 ##
 
 
@@ -20,7 +19,7 @@ makeCacheMatrix <- function(x = matrix()) {
       invMatrix <<- NULL                     ## inverted Matrix
     }
 ##
-    get <- function() x            ## get function returns the input matrix 
+    get <- function() x            ## get function returns the original input matrix 
 ##
     setInverse <- function(inverse) invMatrix <<- inverse  ## function to assign matrix
                                                            ## inverse to invMatrix
